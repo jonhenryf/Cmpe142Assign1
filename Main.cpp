@@ -5,16 +5,19 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <stdlib.h>
+#include <cstdlib>
 #include <cstring>
-#include <stdio.h>
-#include <string.h>
+#include <cstdio.
 #include <unistd.h>
 using namespace std;
 
 
-char readline(void) {
-
+char *readline()
+{
+    char *line = NULL;
+    ssize_t bufsize = 0;
+    getline(&line, &bufsize);
+    return line;
 }
 
 char parseline () {
@@ -25,7 +28,7 @@ int execute()
 
 }
 
-void unixloop(void) {
+void unixloop() {
 
 }
 
