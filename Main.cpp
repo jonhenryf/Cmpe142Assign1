@@ -4,10 +4,29 @@
 
 #include <iostream>
 
+
+
+char readline(void) {
+
+}
+
+char parseline () {
+
+}
+
+int execute(){
+
+}
+
+void unixloop(void) {
+
+}
+
 int main() {
 
-        std::cout << ("Hi Usama");
-
+        unixloop()
         return 0;
 
 }
+
+
