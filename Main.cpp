@@ -9,6 +9,8 @@
 #include <cstring>
 #include <cstdio>
 #include <unistd.h>
+#include <sys/types.h>
+
 using namespace std;
 
 
@@ -20,8 +22,33 @@ char *readline()
     return line;
 }
 
-char parseline ()
+char parseline (char *line)
 {
+
+
+}
+
+int run (char **args) {
+    int status;
+    pid_t apid, bpid;
+
+    apid = fork();
+    if (apid == 0)
+    {
+        //child
+
+        //use exec function
+    }
+    else if (apid < 0)
+    {
+        //error
+    }
+    else
+    {
+        //parent
+
+        //wait for child
+    }
 
 }
 
