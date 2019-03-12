@@ -15,24 +15,28 @@ using namespace std;
 char *readline()
 {
     char *line = NULL;
-    ssize_t bufsize = 0;
-    getline(&line, &bufsize);
+    ssize_t bfsize = 0;
+    getline(&line, &bfsize);
     return line;
 }
 
-char parseline () {
+char parseline ()
+{
 
 }
 
 int execute()
+{
 
 }
 
-void unixloop() {
+void unixloop()
+{
 
 }
 
-int main() {
+int main()
+{
 
         unixloop();
         return 0;
