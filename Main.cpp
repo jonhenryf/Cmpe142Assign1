@@ -24,7 +24,7 @@ void unixloop(void) {
 
 int main() {
 
-        unixloop()
+        unixloop();
         return 0;
 
 }
