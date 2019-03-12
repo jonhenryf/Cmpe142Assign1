@@ -3,7 +3,14 @@
 //
 
 #include <iostream>
-
+#include <ostream>
+#include <string>
+#include <stdlib.h>
+#include <cstring>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+using namespace std;
 
 
 char readline(void) {
@@ -14,7 +21,7 @@ char parseline () {
 
 }
 
-int execute(){
+int execute()
 
 }
 
