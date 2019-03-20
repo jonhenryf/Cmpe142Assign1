@@ -1,8 +1,7 @@
-//
-// Created by jonhenryf on 3/12/19.
-//
-
+#include <sys/wait.h>
+#include <sys/types.h>
 #include <iostream>
+#include <err.h>
 #include <fstream>
 #include <ostream>
 #include <string.h>
@@ -12,73 +11,82 @@
 #include <unistd.h>
 #include<bits/stdc++.h>
 using namespace std;
-#define token_buffsize 64 // for parse function
-#define delimiter " \t\r\n\a"
 
-char *readline()
-{
-    char *line = NULL;
-    ssize_t buffersize = 0;
-    cin.getline(line, buffersize);
-    return line;
-}
-
-char parseline (char *line) {
-    int buffersize = token_buffsize;
-    int position = 0;
+char **parseline(char *line) {
+    int buffersize = 64;
+    int index = 0;
+    char *parsetoken;
     char **tokens = (char**)malloc(buffersize * sizeof(char*));
-    char *token;
-    char **tokensback;
 
-    token = strtok(line, delimiter);
-    while (token != NULL)
-    {
-        tokens[position] = token;
-        position++;
-
-        if (position >= buffersize) {
-            buffersize += token_buffsize;
-            tokensback = tokens;
-            tokens = (char**)realloc(tokens, buffersize * sizeof(char*));
-        }
-
-        token = strtok(NULL, delimiter);
+    parsetoken = strtok(line, " \n");
+    while (parsetoken != NULL) {
+        tokens[index] = parsetoken;
+        index++;
 
     }
 
-    token[position] = NULL;
+    tokens[index] = NULL;
     return tokens;
 
-}
-
-int execute() {
 
 }
 
-void unixloop(void) {
-    char * line;
-    char ** arguments;
-    int stat;
+int main(int argc, char **argv) {
+    char *line = NULL;
+    size_t linesize = 0;
 
-    do {
-        cout << ("BB> ") << std::endl;
-        line = readline();
-        arguments = parseline(line);
-        stat = execute(arguments);
 
-        free(line);
-        free(arguments);
+    while (1) {
+        cout << "@root> ";
+        getline(&line, &linesize, stdin);
+
+        if (strncmp("exit", line, 4) == 0) {
+            exit(0);
+        }
+
+        else if (strncmp("cd", line, 2) == 0) {
+
+            char s[100];
+
+            printf("%s\n", getcwd(s, 100));
+
+            chdir("..");
+
+            printf("%s\n", getcwd(s, 100));
+
+        }
+
+        else if (strncmp("path", line, 4) == 0) {
+
+        }
+
+        else if (strncmp("help", line, 4) == 0) {
+            cout << "nahhh" << endl;
+        }
+
+        else {
+
+            parseline(line);
+            pid_t i = fork();
+
+            if(i == 0) {
+                // execv();
+
+            }
+
+            else if(i > 0) {
+
+            }
+
+            else {
+                cout << "Fork Failure" << endl;
+            }
+
+        }
+
     }
 
-    while (stat);
-
-}
-
-int main() {
-
-        unixloop();
-        return 0;
-
-}
-
-
+    free (line);
+    if (ferror(stdin)) {
+        err(1, "getline");
+    }}
