@@ -114,8 +114,11 @@ int main(int argc, char **argv) {
                 }
             } else if (!strcmp(command[0], "path")) {
 
+                cout << "couldn't get it working :(" << endl;
 
-            } else if (!strcmp(command[0], "exit")) {
+
+            }
+            else if (!strcmp(command[0], "exit")) {
 
                 exit(0);
 
