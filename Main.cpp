@@ -14,6 +14,7 @@ using namespace std;
 
 #define token_buffersize 64
 #define token_delim " \t\r\n\a"
+#define num_children 5
 
 char ** parseline( char *line) {
     int buffersize = token_buffersize;
@@ -50,27 +51,28 @@ char ** parseline( char *line) {
 
 void execute (char** command) {
 
-    pid_t pid = fork();
-    int status;
+    for (int i = 0; i < num_children; i++) {
 
-    if (pid == -1) {
-        cout << "Failed to fork" << endl;
-        return;
-    }
+        pid_t pid = fork();
+        int status;
 
-    else if (pid == 0) {
-        if (execv(command[0], command) < 0) {
-            cout << " Could not execute" << endl;
+        if (pid == -1) {
+            cout << "Failed to fork" << endl;
+            return;
+        } else if (pid == 0) {
+            if (execv(command[0], command) < 0) {
+                cout << " Could not execute" << endl;
+            }
+
+            exit(0);
+        } else {
+
+            for (int i = 0; i <num_children; i++) {
+                waitpid(pid, &status, WUNTRACED);
+                return;
+            }
         }
-
-        exit(0);
     }
-
-    else {
-        waitpid(pid, &status, WUNTRACED);
-        return;
-    }
-
 
 }
 
