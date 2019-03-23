@@ -13,7 +13,7 @@
 using namespace std;
 
 #define token_buffersize 64
-#define token_delim " \t\r\n\a\ "
+#define token_delim " \t\r\n\a"
 
 char ** parseline( char *line) {
     int buffersize = token_buffersize;
