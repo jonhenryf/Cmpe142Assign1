@@ -89,9 +89,12 @@ int main(int argc, char **argv) {
 
         if (!strcmp(command[0], "cd")) {
             char s[100];
-            char* currentdir = getcwd(s, 100);
+            char* currentdir;
 
             if(command[1] == NULL) {
+
+                chdir("/home");
+                currentdir = getcwd(s, 100);
                 cout << currentdir << endl;
             }
 
