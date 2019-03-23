@@ -3,4 +3,4 @@ project(Cmpe142Assign1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Cmpe142Assign1 Main.cpp)
+add_executable(Cmpe142Assign1 jontanShell.cpp)
