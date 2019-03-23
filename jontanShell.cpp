@@ -125,7 +125,6 @@ int main(int argc, char **argv) {
             } else {
 
                 execute(command);
-
             }
 
         }
